@@ -1,0 +1,7 @@
+E:\Program Files\VisualStudioProjects\GameEngine\bin\x64\Release\GameEngine.dll.config
+E:\Program Files\VisualStudioProjects\GameEngine\bin\x64\Release\GameEngine.dll
+E:\Program Files\VisualStudioProjects\GameEngine\bin\x64\Release\GameEngine.pdb
+E:\Program Files\VisualStudioProjects\GameEngine\obj\x64\Release\GameEngine.csproj.CoreCompileInputs.cache
+E:\Program Files\VisualStudioProjects\GameEngine\obj\x64\Release\GameEngine.dll
+E:\Program Files\VisualStudioProjects\GameEngine\obj\x64\Release\GameEngine.pdb
+E:\Program Files\VisualStudioProjects\GameEngine\obj\x64\Release\GameEngine.csproj.AssemblyReference.cache
