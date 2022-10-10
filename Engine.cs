@@ -92,7 +92,7 @@ namespace GameEngine
             GameWindow.Show();
             GameWindow.Init(hostControl);
 
-            SetWindowToDraw(WindowToDraw.GameWindow);//bufferToDraw = new Ref<DirectBitmap>(() => GameWindow.Buffer);
+            SetWindowToDraw(WindowToDraw.GameWindow);
             otherWindows = new EngineWindow[6];
 
             TargetFPS = 60;
@@ -133,8 +133,6 @@ namespace GameEngine
 
                 if (Dispatcher.HasShutdownStarted)
                     break;
-
-                //Thread.Sleep(0);
             }
 
             Font.FontLibrary.DisposeAll();
@@ -313,10 +311,6 @@ namespace GameEngine
             => DrawDbP(v1.X, v1.Y, fromOff.X, fromOff.Y, db);
         protected void DrawDbP(int x1, int y1, int fromXOff, int fromYOff, DirectBitmap db)
         {
-            /*for (int y = fromYOff; y < db.Height && y + y1 < WTD.Value.Buffer.Height; y++)
-            {
-                WTD.Value.Buffer.Write((y + y1) * WTD.Value.Buffer.Width + x1 + fromXOff, db.Data, y * db.Width + fromXOff, db.Width - fromXOff);
-            }*/
             for (int x = fromXOff; x < db.Width; x++)
                 for (int y = fromYOff; y < db.Height; y++)
                     WTD.Value.Buffer.Write((y + y1) * WTD.Value.Buffer.Width + x1 + x, db.Data[(y) * db.Width + x]);
@@ -553,17 +547,6 @@ namespace GameEngine
             => DrawCircle(pos.X, pos.Y, radius, color);
         protected void DrawCircle(Int32 x, Int32 y, Int32 radius,  Color color)
             => DrawCircle(x, y, radius, color.ToArgb());
-        void drawCircle(int xc, int yc, int x, int y, int color)
-        {
-            Draw(xc + x, yc + y, color);
-            Draw(xc - x, yc + y, color);
-            Draw(xc + x, yc - y, color);
-            Draw(xc - x, yc - y, color);
-            Draw(xc + y, yc + x, color);
-            Draw(xc - y, yc + x, color);
-            Draw(xc + y, yc - x, color);
-            Draw(xc - y, yc - x, color);
-        }
         protected void DrawCircle(Int32 xp, Int32 yp, Int32 radius, int color)
         {
             int off = MathPlus.RoundToInt(radius / 2.35);
@@ -689,9 +672,6 @@ namespace GameEngine
             DrawLine(x2, y2, x3, y3, color);
             DrawLine(x3, y3, x1, y1, color);
         }
-        /*public void DrawTriangle(Triangle tri, Color c)
-			=> DrawTriangle(MathPlus.FloorToInt(tri.v0.X), MathPlus.FloorToInt(tri.v0.Y), MathPlus.FloorToInt(tri.v1.X),
-				MathPlus.FloorToInt(tri.v1.Y), MathPlus.FloorToInt(tri.v2.X), MathPlus.FloorToInt(tri.v2.Y), c);*/
 
         void SWAP(ref int x, ref int y)
         {
@@ -849,8 +829,5 @@ namespace GameEngine
                 if (y > y3) return;
             }
         }
-        /*public void FillTriangle(Triangle tri, Color c)
-			=> FillTriangle(MathPlus.FloorToInt(tri.v0.X), MathPlus.FloorToInt(tri.v0.Y), MathPlus.FloorToInt(tri.v1.X),
-				MathPlus.FloorToInt(tri.v1.Y), MathPlus.FloorToInt(tri.v2.X), MathPlus.FloorToInt(tri.v2.Y), c);*/
     }
 }

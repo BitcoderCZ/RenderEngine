@@ -41,5 +41,17 @@ namespace GameEngine.Maths.Vectors
 
         public override string ToString()
             => $"X: {X}, Y: {Y}";
+
+        public override bool Equals(object obj)
+        {
+            if (this == null && obj == null)
+                return true;
+            else if (obj == null)
+                return false;
+            else if (obj is Vector2D other)
+                return this == other;
+            else
+                return false;
+        }
     }
 }

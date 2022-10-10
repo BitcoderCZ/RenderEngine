@@ -103,8 +103,6 @@
     <Compile Include="Maths\Vectors\Vector2D.cs" />
     <Compile Include="Maths\Vectors\Vector2F.cs" />
     <Compile Include="Maths\Vectors\Vector2I.cs" />
-    <Compile Include="Physics\Vector2F.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ref.cs" />
     <Compile Include="UI\UIManager.cs" />

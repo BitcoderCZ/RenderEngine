@@ -282,18 +282,6 @@ namespace GameEngine.UI
 
     public class UIInputField : UIElement
     {
-        /*[DllImport("user32.dll")]
-        static extern int ToUnicodeEx(uint wVirtKey, uint wScanCode, byte[] lpKeyState, [Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder pwszBuff, int cchBuff, uint wFlags, IntPtr dwhkl);
-
-        [DllImport("user32.dll")]
-        static extern bool GetKeyboardState(byte[] lpKeyState);
-
-        [DllImport("user32.dll")]
-        static extern uint MapVirtualKey(uint uCode, uint uMapType);
-
-        [DllImport("user32.dll")]
-        static extern IntPtr GetKeyboardLayout(uint idThread);*/
-
         public double cursorSwitchTime = 0.5d;
         private double cursorTimer;
 
@@ -431,26 +419,11 @@ namespace GameEngine.UI
             }
         }
 
-        /*private static string VKCodeToUnicode(uint VKCode)
-        {
-            StringBuilder sbString = new StringBuilder();
-
-            byte[] bKeyState = new byte[255];
-            bool bKeyStateStatus = GetKeyboardState(bKeyState);
-            if (!bKeyStateStatus)
-                return "";
-            uint lScanCode = MapVirtualKey(VKCode, 0);
-            IntPtr HKL = GetKeyboardLayout(0);
-
-            ToUnicodeEx(VKCode, lScanCode, bKeyState, sbString, (int)5, (uint)0, HKL);
-            return sbString.ToString();
-        }*/
-
-        protected virtual char MapKey(Key key, Modifiers modifiers) // clipboard
+        protected virtual char MapKey(Key key, Modifiers modifiers)
         {
             string enumKey = Enum.GetName(typeof(Key), key);
 
-            if (enumKey.Length == 1 && char.IsLetter(enumKey[0])) // letter
+            if (enumKey.Length == 1 && char.IsLetter(enumKey[0]))
             {
                 if ((modifiers & Modifiers.Shift) == Modifiers.None)
                     return char.ToLower(enumKey[0]);
@@ -530,9 +503,8 @@ namespace GameEngine.UI
             Y = y;
             Color = color;
             Size = size;
-            //Size textDimensions = FontRender.GetTextSize(App.font, Text, size);
-            Width = -1;//textDimensions.Width;
-            Height = -1;//textDimensions.Height;
+            Width = -1;
+            Height = -1;
         }
 
         public override void Draw(Engine engine, UIManager manager)

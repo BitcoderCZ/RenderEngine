@@ -30,5 +30,16 @@ namespace GameEngine.Maths.Vectors
         public static bool operator !=(Vector2I a, Vector2I b) => a.X != b.X || a.Y != b.Y;
 
         public override string ToString() => $"X: {X} Y: {Y}";
+        public override bool Equals(object obj)
+        {
+            if (this == null && obj == null)
+                return true;
+            else if (obj == null)
+                return false;
+            else if (obj is Vector2I other)
+                return this == other;
+            else
+                return false;
+        }
     }
 }

@@ -280,7 +280,7 @@ namespace GameEngine.Font
 
             if (_indexMap == 0)
             {
-                throw new System.Exception("Could not find font index map");
+                throw new Exception("Could not find font index map");
             }
             _indexToLocFormat = ReadU16(_head + 50);
             renderedGlyphs = new Dictionary<float, Dictionary<char, FontGlyph>>();
@@ -337,7 +337,7 @@ namespace GameEngine.Font
 
             if (_indexMap == 0)
             {
-                throw new System.Exception("Could not find font index map");
+                throw new Exception("Could not find font index map");
             }
             _indexToLocFormat = ReadU16(_head + 50);
         }
@@ -441,23 +441,23 @@ namespace GameEngine.Font
             }
 
             // we only look at the first table. it must be 'horizontal' and format 0.
-            if (ReadU16(this._kern + 2) < 1) // number of tables
+            if (ReadU16(_kern + 2) < 1) // number of tables
             {
                 return 0;
             }
 
-            if (ReadU16(this._kern + 8) != 1) // horizontal flag, format
+            if (ReadU16(_kern + 8) != 1) // horizontal flag, format
             {
                 return 0;
             }
 
             int l = 0;
-            int r = ReadU16(this._kern + 10) - 1;
+            int r = ReadU16(_kern + 10) - 1;
             uint needle = (uint)((glyph1 << 16) + glyph2);
             while (l <= r)
             {
                 var m = (l + r) >> 1;
-                var straw = ReadU32((uint)(this._kern + 18 + (m * 6))); // note: unaligned read
+                var straw = ReadU32((uint)(_kern + 18 + (m * 6))); // note: unaligned read
                 if (needle < straw)
                     r = m - 1;
                 else
@@ -465,7 +465,7 @@ namespace GameEngine.Font
                     l = m + 1;
                 else
                 {
-                    return ReadS16((uint)(this._kern + 22 + (m * 6)));
+                    return ReadS16((uint)(_kern + 22 + (m * 6)));
                 }
             }
 

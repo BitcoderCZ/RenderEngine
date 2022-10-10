@@ -68,7 +68,7 @@ namespace GameEngine
 
         private TaskFactory factory;
 
-        public EngineInput Input;// { get; private set; }
+        public EngineInput Input;
 
         public bool setUp { get; private set; } = false;
 
@@ -138,17 +138,6 @@ namespace GameEngine
                 drawToScreen();
 #endif
             }
-            /*Buffer.CopyTo(FronterBuffer);
-            BufferedGraphics?.Graphics.DrawImage(
-                FronterBuffer.Bitmap,
-                new RectangleF(PointF.Empty, HostSize),
-                new RectangleF(new PointF(-0.5f, -0.5f), BufferSize),
-                GraphicsUnit.Pixel);
-
-            FronterBuffer.Bitmap.Save("E:\\screen.png");
-
-            // swap buffers
-            BufferedGraphics?.Render(GraphicsHostDeviceContext);*/
         }
 
         private void drawToScreen()

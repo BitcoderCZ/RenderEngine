@@ -5,13 +5,6 @@ namespace GameEngine.Font
 {
     public static class DistanceFieldUtils
     {
-        /*
-        Computes a distance field transform of a high resolution binary source channel and returns the result as a low resolution channel.
-        scale_down : The amount the source channel will be scaled down.
-        A value of 8 means the destination image will be 1/8th the size of the source
-        spread: The spread in pixels before the distance field clamps to (zero/one). 
-        The valueis specified in units of the destination image. The spread in the source image will be spread*scale_down.
-        */
         public static GlyphBitmap CreateDistanceField(GlyphBitmap source, int scale, float spread)
         {
             var result = new GlyphBitmap(source.Width / scale, source.Height / scale);
