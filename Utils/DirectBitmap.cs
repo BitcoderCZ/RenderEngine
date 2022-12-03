@@ -264,19 +264,21 @@ namespace GameEngine.Utils
                     to.Write<int>(destOfs + 1 + to.Width, clr);
                 });
             });
-
-            /*for (int X = 0; X < from.Width; X++)
-                for (int Y = 0; Y < from.Height; Y++)
+        }
+        public static void Drawx4(this DirectBitmap to, DirectBitmap from, int x, int y)
+        {
+            Parallel.For(0, from.Height, U.ParallelOptionsDefault, (int Y) => {
+                Parallel.For(0, from.Width, U.ParallelOptionsDefault, (int X) =>
                 {
-                    int destOfs = (x + X * 2) + (y + Y * 2) * to.Width;
+                    int destOfs = (x + X * 4) + (y + Y * 4) * to.Width;
                     int fromOfs = X + Y * from.Width;
                     int clr = from.Read<int>(fromOfs);
 
-                    to.Write<int>(destOfs, clr);
-                    to.Write<int>(destOfs + 1, clr);
-                    to.Write<int>(destOfs + to.Width, clr);
-                    to.Write<int>(destOfs + 1 + to.Width, clr);
-                }*/
+                    for (int _x = 0; _x < 4; _x++)
+                        for (int _y = 0; _y < 4; _y++)
+                            to.Write<int>(destOfs + _x + _y * to.Width, clr);
+                });
+            });
         }
     }
 }

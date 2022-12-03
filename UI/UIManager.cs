@@ -94,7 +94,8 @@ namespace GameEngine.UI
         public void Draw()
         {
             for (int i = 0; i < elements.Count; i++)
-                elements[i].element.Draw(engine, this);
+                if (elements[i].element.Active)
+                    elements[i].element.Draw(engine, this);
         }
 
         public void Update(double deltaTime)
@@ -252,6 +253,7 @@ namespace GameEngine.UI
         int Y { get; set; }
         int Width { get; set; }
         int Height { get; set; }
+        bool Active { get; set; }
 
         void Draw(Engine engine, UIManager manager);
         void Update(Engine engine, UIManager manager, double deltaTime);
@@ -269,6 +271,7 @@ namespace GameEngine.UI
         public int Y { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
+        public bool Active { get; set; } = true;
 
         public abstract void Draw(Engine engine, UIManager manager);
         public virtual void Update(Engine engine, UIManager manager, double deltaTime) { }

@@ -26,8 +26,15 @@ namespace GameEngine.Maths.Vectors
         public static Vector2I operator *(Vector2I a, int b) => new Vector2I(a.X * b, a.Y * b);
         public static Vector2I operator /(Vector2I a, int b) => new Vector2I(a.X / b, a.Y / b);
 
+        public static Vector2I operator -(Vector2I a) => new Vector2I(-a.X, -a.Y);
+
         public static bool operator ==(Vector2I a, Vector2I b) => a.X == b.X && a.Y == b.Y;
         public static bool operator !=(Vector2I a, Vector2I b) => a.X != b.X || a.Y != b.Y;
+
+        public static implicit operator Vector2F(Vector2I a)
+            => new Vector2F(a.X, a.Y);
+        public static implicit operator Vector2D(Vector2I a)
+            => new Vector2D(a.X, a.Y);
 
         public override string ToString() => $"X: {X} Y: {Y}";
         public override bool Equals(object obj)

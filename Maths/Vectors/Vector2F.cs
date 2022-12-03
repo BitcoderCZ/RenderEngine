@@ -33,6 +33,11 @@ namespace GameEngine.Maths.Vectors
         public static Vector2F operator /(Vector2F a, float b)
             => new Vector2F(a.X / b, a.Y / b);
 
+        public static explicit operator Vector2I(Vector2F a)
+            => new Vector2I((int)a.X, (int)a.Y);
+        public static implicit operator Vector2D(Vector2F a)
+            => new Vector2D(a.X, a.Y);
+
         public static bool operator ==(Vector2F a, Vector2F b)
             => a.Equal(b);
         public static bool operator !=(Vector2F a, Vector2F b)

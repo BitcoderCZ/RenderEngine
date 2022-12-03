@@ -39,6 +39,11 @@ namespace GameEngine.Maths.Vectors
         public static bool operator !=(Vector2D a, Vector2D b)
             => !(a == b);
 
+        public static explicit operator Vector2I(Vector2D a)
+            => new Vector2I((int)a.X, (int)a.Y);
+        public static explicit operator Vector2F(Vector2D a)
+            => new Vector2F((float)a.X, (float)a.Y);
+
         public override string ToString()
             => $"X: {X}, Y: {Y}";
 

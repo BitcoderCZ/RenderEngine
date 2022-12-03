@@ -7,6 +7,7 @@ using GameEngine.Utils;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Point = System.Drawing.Point;
@@ -134,6 +135,7 @@ namespace GameEngine
                 Buffer.CopyTo(FronterBuffer);
 #if ASINCDRAW
                 factory.StartNew(drawToScreen);
+                //ThreadPool.QueueUserWorkItem(drawToScreen);
 #else
                 drawToScreen();
 #endif

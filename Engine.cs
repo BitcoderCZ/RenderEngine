@@ -456,7 +456,8 @@ namespace GameEngine
         {
             for (int x = 0; x < db.Width; x++)
                 for (int y = 0; y < db.Height; y++)
-                    if (db.Data[y * db.Width + x] != 0)
+                    if (x1 + x >= 0 && y1 + y >= 0 && x1 + x < WTD.Value.Buffer.Width && y1 + y < WTD.Value.Buffer.Height &&
+                        db.Data[y * db.Width + x] != 0)
                         WTD.Value.Buffer.Write((y + y1) * WTD.Value.Buffer.Width + x1 + x, db.Data[y * db.Width + x]);
         }
 

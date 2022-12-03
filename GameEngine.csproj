@@ -76,7 +76,6 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converter.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="EngineWindow.cs" />
     <Compile Include="Font\DistanceField.cs" />

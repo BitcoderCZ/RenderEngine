@@ -1,11 +1,11 @@
-﻿using GameEngine.Physics;
+﻿//using GameEngine.Physics;
 using System;
 
 namespace GameEngine.Maths
 {
     public static class MathPlus
     {
-        public static float Lenght(Vector2F v)
+        /*public static float Lenght(Vector2F v)
             => (float)Math.Sqrt(v.X * v.X + v.Y * v.Y);
 
         public static float Distance(Vector2F a, Vector2F b)
@@ -22,7 +22,7 @@ namespace GameEngine.Maths
             => a.X * b.X + a.Y * b.Y;
 
         public static float Cross(Vector2F a, Vector2F b)
-            => a.X * b.Y - a.Y * b.X;
+            => a.X * b.Y - a.Y * b.X;*/
 
 
         public static float Round(float value)
