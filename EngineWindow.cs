@@ -104,10 +104,16 @@ namespace GameEngine
         }
 
         [STAThread]
-        public void ReInit()
+        public void ReInit(int width = -1, int height = -1)
         {
-            HostSize = Input.Size;
-            BufferSize = Input.Size;
+            if (width == -1 || height == -1) {
+                HostSize = Input.Size;
+                BufferSize = Input.Size;
+            } else {
+                Size s = new Size(width, height);
+                HostSize = s;
+                BufferSize = s;
+            }
 
             GraphicsHost = Graphics.FromHwnd(HostHandle);
             GraphicsHostDeviceContext = GraphicsHost.GetHdc();
@@ -135,7 +141,6 @@ namespace GameEngine
                 Buffer.CopyTo(FronterBuffer);
 #if ASINCDRAW
                 factory.StartNew(drawToScreen);
-                //ThreadPool.QueueUserWorkItem(drawToScreen);
 #else
                 drawToScreen();
 #endif
@@ -165,7 +170,7 @@ namespace GameEngine
             value /= 2d;
             value.X *= (double)Width;
             value.Y *= (double)Height;
-            return value.ToVector2I();
+            return (Vector2I)value;
         }
 
         public int RelativeToPixelX(double value)

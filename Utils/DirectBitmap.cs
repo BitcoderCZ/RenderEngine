@@ -210,8 +210,6 @@ namespace GameEngine.Utils
 
     public static class BmEx
     {
-        //static object writeLock = new object();
-
         public static Color SampleColour(this Bitmap bm, float x, float y)
         {
             //lock (writeLock)

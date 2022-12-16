@@ -160,7 +160,7 @@ namespace GameEngine.Font
             _indexToLocFormat = default;
         }
 
-        public Font(byte[] bytes, int id)
+        public Font(byte[] bytes, int id = 0)
         {
             DateTime start = DateTime.Now;
             Console.WriteLine("Loading from bytes");

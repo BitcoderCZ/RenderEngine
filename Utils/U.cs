@@ -14,36 +14,6 @@ namespace GameEngine.Utils
         public static ParallelOptions ParallelOptionsDefault =
             new ParallelOptions { MaxDegreeOfParallelism = EnvironmentProcessorCount };
 
-        public static int Clamp(this int value, int min, int max)
-        {
-            if (value < min)
-                return min;
-            else if (value > max)
-                return max;
-            else
-                return value;
-        }
-
-        public static float Clamp(this float value, float min, float max)
-        {
-            if (value < min)
-                return min;
-            else if (value > max)
-                return max;
-            else
-                return value;
-        }
-
-        public static double Clamp(this double value, double min, double max)
-        {
-            if (value < min)
-                return min;
-            else if (value > max)
-                return max;
-            else
-                return value;
-        }
-
         public static T Cloned<T>(this T cloneable) where T : ICloneable
             => (T)cloneable.Clone();
 
@@ -95,14 +65,14 @@ namespace GameEngine.Utils
             value1 = temp;
         }
 
-        public static int ToRgba(this System.Drawing.Color color)
+        public static int ToRgba(this Color color)
         {
             return ((((color.A << 8) + color.B) << 8) + color.G << 8) + color.R;
         }
 
-        public static System.Drawing.Color FromRgbaToColor(this int color)
+        public static Color FromRgbaToColor(this int color)
         {
-            return System.Drawing.Color.FromArgb
+            return Color.FromArgb
             (
                 (color >> 24) & 0xFF,
                 (color >> 0) & 0xFF,
@@ -113,10 +83,10 @@ namespace GameEngine.Utils
 
         #region conversions
 
+        public static Vector2F ToVector2F(this Point p) => new Vector2F(p.X, p.Y);
+        public static Vector2F ToVector2F(this System.Windows.Point p) => new Vector2F((float)p.X, (float)p.Y);
         public static Vector2D ToVector2D(this Point p) => new Vector2D(p.X, p.Y);
         public static Vector2D ToVector2D(this System.Windows.Point p) => new Vector2D(p.X, p.Y);
-
-        public static Vector2I ToVector2I(this Vector2D p) => new Vector2I((int)p.X, (int)p.Y);
 
         #endregion
     }

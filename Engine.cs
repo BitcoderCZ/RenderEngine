@@ -44,11 +44,6 @@ namespace GameEngine
 
         private double targetElapsedTime;
 
-        public Engine()
-        {
-            
-        }
-
         [STAThread]
         public void Run(Size windowSize, string windowTitle)
         {
@@ -153,26 +148,26 @@ namespace GameEngine
                 otherWindows[i]?.Dispose();
         }
 
-        protected virtual void Initialize() { }
+        protected abstract void Initialize();
 
         protected abstract void drawInternal();
 
         protected void SetWindowToDraw(WindowToDraw windowToDraw)
         {
             if (windowToDraw == WindowToDraw.GameWindow && GameWindow != null && GameWindow.setUp)
-                this.WTD = new Ref<EngineWindow>(() => GameWindow);
+                WTD = new Ref<EngineWindow>(() => GameWindow);
             else if (windowToDraw == WindowToDraw.Window0 && otherWindows[0] != null && otherWindows[0].setUp)
-                this.WTD = new Ref<EngineWindow>(() => otherWindows[0]);
+                WTD = new Ref<EngineWindow>(() => otherWindows[0]);
             else if (windowToDraw == WindowToDraw.Window1 && otherWindows[1] != null && otherWindows[1].setUp)
-                this.WTD = new Ref<EngineWindow>(() => otherWindows[1]);
+                WTD = new Ref<EngineWindow>(() => otherWindows[1]);
             else if (windowToDraw == WindowToDraw.Window2 && otherWindows[2] != null && otherWindows[2].setUp)
-                this.WTD = new Ref<EngineWindow>(() => otherWindows[2]);
+                WTD = new Ref<EngineWindow>(() => otherWindows[2]);
             else if (windowToDraw == WindowToDraw.Window3 && otherWindows[3] != null && otherWindows[3].setUp)
-                this.WTD = new Ref<EngineWindow>(() => otherWindows[3]);
+                WTD = new Ref<EngineWindow>(() => otherWindows[3]);
             else if (windowToDraw == WindowToDraw.Window4 && otherWindows[4] != null && otherWindows[4].setUp)
-                this.WTD = new Ref<EngineWindow>(() => otherWindows[4]);
+                WTD = new Ref<EngineWindow>(() => otherWindows[4]);
             else if (windowToDraw == WindowToDraw.Window5 && otherWindows[5] != null && otherWindows[5].setUp)
-                this.WTD = new Ref<EngineWindow>(() => otherWindows[5]);
+                WTD = new Ref<EngineWindow>(() => otherWindows[5]);
         }
 
         /// <summary>
@@ -296,6 +291,7 @@ namespace GameEngine
 
         }
 
+        // Db drawing is a mess :|
         protected void DrawDb(Vector2I v1, DirectBitmap db)
             => DrawDb(v1.X, v1.Y, db);
         protected void DrawDb(int x1, int y1, DirectBitmap db)
@@ -450,8 +446,6 @@ namespace GameEngine
             else
                 DrawDbA(rx, ry, db); // Full draw
         }
-        #endregion
-
         internal void DrawDbAInter(int x1, int y1, DirectBitmap db)
         {
             for (int x = 0; x < db.Width; x++)
@@ -460,6 +454,7 @@ namespace GameEngine
                         db.Data[y * db.Width + x] != 0)
                         WTD.Value.Buffer.Write((y + y1) * WTD.Value.Buffer.Width + x1 + x, db.Data[y * db.Width + x]);
         }
+        #endregion
 
 
         protected void DrawString(int x, int y, string s, Font.Font f, int size, Color color, int xOffset = 2, Font.RenderType rt = Font.RenderType.UpToDown)

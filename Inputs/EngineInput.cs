@@ -148,7 +148,7 @@ namespace GameEngine.Inputs
         }
         private void MouseMoveA(object sender, IMouseEventArgs args)
         {
-            mousePosScreen = args.Position.ToVector2I();
+            mousePosScreen = (Vector2I)args.Position;
             mousePosScreenAcuret = args.Position;
         }
         private void MouseWheelA(object sender, IMouseEventArgs args)
